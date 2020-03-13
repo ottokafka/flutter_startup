@@ -13,25 +13,27 @@ class _DashboardUserState extends State<DashboardUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Dashboard"),
-        backgroundColor: Colors.lightBlueAccent,
-      ),
+//      appBar: AppBar(
+//        title: Text("Dashboard"),
+//        backgroundColor: Colors.lightBlueAccent,
+//      ),
       backgroundColor: Colors.black,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(32, 0, 32, 16),
-              child: MaterialButton(
-                height: 42.0,
-                color: Colors.lightBlue,
-                child: Text("Search"),
-                onPressed: () {
-                  Navigator.pushNamed(context, Search.id);
-                },
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(32, 0, 32, 16),
+                child: MaterialButton(
+                  height: 42.0,
+                  color: Colors.lightBlue,
+                  child: Text("Search"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, Search.id);
+                  },
+                ),
               ),
             ),
             SizedBox(height: 6),
@@ -40,7 +42,7 @@ class _DashboardUserState extends State<DashboardUser> {
               child: MaterialButton(
                 height: 42.0,
                 color: Colors.lightBlueAccent,
-                child: Text("Update Profile"),
+                child: Text("Add Payment"),
                 onPressed: () {
 //                  Navigator.pushNamed(context, RegisterUser.id);
                 },

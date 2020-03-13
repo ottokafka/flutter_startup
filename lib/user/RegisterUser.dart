@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterstartup/user/RegisterUserAction.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'DashboardUser.dart';
 
 class RegisterUser extends StatefulWidget {
@@ -22,6 +21,7 @@ class _RegisterUserState extends State<RegisterUser> {
     checkToken() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String tokenUser = (prefs.getString("tokenUser"));
+      print(tokenUser);
       if (tokenUser != null) {
         Navigator.pushNamed(context, DashboardUser.id);
       }
@@ -29,7 +29,7 @@ class _RegisterUserState extends State<RegisterUser> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Navbar"),
+        title: Text("Register"),
         backgroundColor: Colors.lightBlueAccent,
       ),
       backgroundColor: Colors.black,
@@ -73,8 +73,12 @@ class _RegisterUserState extends State<RegisterUser> {
             CupertinoButton.filled(
               child: Text("Register"),
               onPressed: () {
-                registerUser(name, email, password);
-                checkToken();
+                secondFunction() async {
+                  await registerUser(name, email, password);
+                  checkToken();
+                }
+
+                secondFunction();
               },
             ),
           ],

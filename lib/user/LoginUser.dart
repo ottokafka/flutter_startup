@@ -17,20 +17,21 @@ class LoginUser extends StatefulWidget {
 class _LoginUserState extends State<LoginUser> {
   String email;
   String password;
+//  String tokenUser;
+  checkToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String tokenUser = (prefs.getString("tokenUser"));
+    print("The tokenUser is: $tokenUser");
+    if (tokenUser != null) {
+      Navigator.pushNamed(context, DashboardUser.id);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    checkToken() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String tokenUser = (prefs.getString("tokenUser"));
-      if (tokenUser != null) {
-        Navigator.pushNamed(context, DashboardUser.id);
-      }
-    }
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("Navbar"),
+        title: Text("Login"),
         backgroundColor: Colors.lightBlueAccent,
       ),
       backgroundColor: Colors.white,
@@ -65,8 +66,12 @@ class _LoginUserState extends State<LoginUser> {
             CupertinoButton.filled(
               child: Text("Login"),
               onPressed: () {
-                loginUser(email, password);
-                checkToken();
+                secondFunction() async {
+                  await loginUser(email, password);
+                  checkToken();
+                }
+
+                secondFunction();
               },
             ),
           ],
