@@ -1,29 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterstartup/business/RegisterBusinessAction.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'DashboardBusiness.dart';
+import 'addLocatiionAction.dart';
 
-class RegisterBusiness extends StatefulWidget {
-  static const String id = "registerBusiness";
+class AddLocation extends StatefulWidget {
+  static const String id = "addLocation";
   @override
-  _RegisterBusinessState createState() => _RegisterBusinessState();
+  _AddLocationState createState() => _AddLocationState();
 }
 
-class _RegisterBusinessState extends State<RegisterBusiness> {
-  String password;
-  String email;
-  String firstName;
-  String lastName;
-  String phoneNumber;
+class _AddLocationState extends State<AddLocation> {
+  String company;
+  String address;
+  String city;
+  String state;
+  String zip;
 
   @override
   Widget build(BuildContext context) {
     checkToken() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String tokenBusiness = (prefs.getString("tokenBusiness"));
-      print("The tokenBusiness is: $tokenBusiness");
+//      print("The tokenBusiness is: $tokenBusiness");
       if (tokenBusiness != null) {
         Navigator.pushNamed(context, DashboardBusiness.id);
       }
@@ -31,7 +31,7 @@ class _RegisterBusinessState extends State<RegisterBusiness> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
+        title: Text("Add Location"),
         backgroundColor: Colors.lightBlueAccent,
       ),
       backgroundColor: Colors.white,
@@ -41,49 +41,48 @@ class _RegisterBusinessState extends State<RegisterBusiness> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CupertinoTextField(
-              placeholder: "First Name",
+              placeholder: "Company name",
               clearButtonMode: OverlayVisibilityMode.editing,
               onChanged: (value) {
-                firstName = value;
+                company = value;
               },
             ),
             CupertinoTextField(
-              placeholder: "Last Name",
+              placeholder: "Address",
               onChanged: (value) {
-                lastName = value;
+                address = value;
               },
               obscureText: false,
             ),
             CupertinoTextField(
-              placeholder: "Email",
+              placeholder: "city",
               onChanged: (value) {
-                email = value;
+                city = value;
               },
               obscureText: false,
             ),
             CupertinoTextField(
-              placeholder: "Phone Number",
+              placeholder: "state",
               onChanged: (value) {
-                phoneNumber = value;
+                state = value;
               },
               obscureText: false,
             ),
             CupertinoTextField(
-              placeholder: "Password",
+              placeholder: "zip",
               obscureText: true,
 //              textAlign: TextAlign.center,
               onChanged: (value) {
-                password = value;
+                zip = value;
               },
             ),
             SizedBox(height: 20),
             CupertinoButton.filled(
-              child: Text("Register"),
+              child: Text("Add Location"),
               onPressed: () {
                 secondFunction() async {
-                  await registerBusiness(
-                      firstName, lastName, email, password, phoneNumber);
-                  checkToken();
+                  await addBusinessLocation(company, address, city, state, zip);
+                  Navigator.pushNamed(context, DashboardBusiness.id);
                 }
 
                 secondFunction();

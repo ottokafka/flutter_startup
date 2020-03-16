@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 
 // --- Fetch to data with http Client request
 Future<List<Location>> fetchPhotos(http.Client client) async {
-//  var url = 'http://10.0.2.2:5000/api/businessinfo/city';
-  var url = 'https://startup-barber.herokuapp.com/api/businessinfo/city';
+  var url = 'http://10.0.2.2:5000/api/businessinfo/city';
+//  var url = 'https://startup-barber.herokuapp.com/api/businessinfo/city';
   String json = '{"city": "sacramento"}';
   Map<String, String> headers = {
     "Content-type": "application/json",

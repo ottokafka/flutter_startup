@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterstartup/business/AddLocation.dart';
 import 'package:flutterstartup/business/LandingBusiness.dart';
+import 'package:flutterstartup/business/LocationBusiness.dart';
 import 'package:flutterstartup/business/LoginBusiness.dart';
 import 'package:flutterstartup/business/RegisterBusiness.dart';
 import 'package:flutterstartup/business/DashboardBusiness.dart';
@@ -15,13 +17,11 @@ import 'package:provider/provider.dart';
 void main() => runApp(FlutterStartup());
 
 class FlutterStartup extends StatelessWidget {
-  final String data = "top secret";
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
 //      home: Scaffold(),
-      initialRoute: LandingUser.id,
+      initialRoute: DashboardBusiness.id,
       routes: {
         LandingUser.id: (context) => LandingUser(),
         LoginUser.id: (context) => LoginUser(),
@@ -33,6 +33,8 @@ class FlutterStartup extends StatelessWidget {
         LoginBusiness.id: (context) => LoginBusiness(),
         RegisterBusiness.id: (context) => RegisterBusiness(),
         DashboardBusiness.id: (context) => DashboardBusiness(),
+        AddLocation.id: (context) => AddLocation(),
+        LocationBusiness.id: (context) => LocationBusiness(),
       },
     );
   }

@@ -5,18 +5,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'DashboardBusiness.dart';
 
-class LoginBusiness extends StatelessWidget {
+class LoginBusiness extends StatefulWidget {
   static const String id = "loginBusiness";
-  String password;
+
+  @override
+  _LoginBusinessState createState() => _LoginBusinessState();
+}
+
+class _LoginBusinessState extends State<LoginBusiness> {
   String email;
+  String password;
 
   @override
   Widget build(BuildContext context) {
     checkToken() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      String tokenUser = (prefs.getString("tokenUser"));
-      print("The tokenUser is: $tokenUser");
-      if (tokenUser != null) {
+      String tokenBusiness = (prefs.getString("tokenBusiness"));
+      print("The tokenBusiness is: $tokenBusiness");
+      if (tokenBusiness != null) {
         Navigator.pushNamed(context, DashboardBusiness.id);
       }
     }
@@ -34,7 +40,7 @@ class LoginBusiness extends StatelessWidget {
           children: <Widget>[
             TextField(
               onChanged: (value) {
-                password = value;
+                email = value;
               },
               obscureText: false,
               decoration: InputDecoration(

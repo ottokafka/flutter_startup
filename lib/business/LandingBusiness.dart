@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterstartup/business/LoginBusiness.dart';
 import 'package:flutterstartup/business/RegisterBusiness.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../user/LoginUser.dart';
 import '../user/RegisterUser.dart';
 
@@ -13,6 +14,18 @@ class LandingBusiness extends StatefulWidget {
 }
 
 class _LandingBusinessState extends State<LandingBusiness> {
+  checkToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String tokenBusiness = (prefs.getString("tokenBusiness"));
+    if (tokenBusiness != null) {
+      await prefs.setString("tokenBusiness", null);
+    }
+//      print("The tokenUser is: $tokenUser");
+    if (tokenBusiness != null) {
+//      Navigator.pushNamed(context, DashboardBusiness.id);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

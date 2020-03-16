@@ -2,20 +2,17 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-import 'DashboardUser.dart';
-
-// Login User
-loginUser(email, password) async {
-  print(email);
-  print(password);
+registerBusiness(firstName, lastName, email, password, phoneNumber) async {
   // in web use localhost but in android use 10.0.2.2
   // ios work with 127.0.0.1
   try {
-    var url = 'http://10.0.2.2:5000/api/user/loginUser';
-//    var url = 'https://startup-barber.herokuapp.com/api/user/loginUser';
+//    var url = 'http://127.0.0.1:5000/api/registerBusiness';
+    var url = 'http://10.0.2.2/api/registerBusiness';
+//    var url = 'https://startup-barber.herokuapp.com/api/registerBusiness';
     // email has to be wrapped in " " or there will be an error
-    String json = '{"email": "$email", "password": "$password"}';
-    print(json);
+    String json =
+        '{"firstName": "$firstName", "lastName": "$lastName", "email": "$email", "password": "$password", "phoneNumber": "$phoneNumber"}';
+    print("the user entered $json");
     Map<String, String> headers = {"Content-type": "application/json"};
     var response = await http.post(url, headers: headers, body: json);
 
@@ -25,20 +22,18 @@ loginUser(email, password) async {
     var parsedJson = jsonDecode(response.body);
     // print how just the token numbers
 //  print(parsedJson["token"]);
-    var tokenUser = parsedJson["tokenUser"];
+    var tokenBusiness = parsedJson["tokenBusiness"];
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     // This saves the token into the device as token: j9384ujhsdf
-    await prefs.setString("tokenUser", tokenUser);
-
+    await prefs.setString("tokenBusiness", tokenBusiness);
     // will grab the token from the device
-    String getTokenUser = (prefs.getString("tokenUser"));
+    String getTokenBusiness = (prefs.getString("tokenBusiness"));
 
     // show that the token is coming from device storage
-
-    print(getTokenUser);
+    print(getTokenBusiness);
   } catch (err) {
-    print(err);
+    print('Caught error: $err');
   }
 }
