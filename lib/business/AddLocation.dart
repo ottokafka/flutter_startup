@@ -70,7 +70,7 @@ class _AddLocationState extends State<AddLocation> {
             ),
             CupertinoTextField(
               placeholder: "zip",
-              obscureText: true,
+              obscureText: false,
 //              textAlign: TextAlign.center,
               onChanged: (value) {
                 zip = value;

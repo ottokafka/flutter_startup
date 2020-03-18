@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterstartup/business/AddAvailability.dart';
 import 'package:flutterstartup/business/AddLocation.dart';
 import 'package:flutterstartup/business/LandingBusiness.dart';
 import 'package:flutterstartup/business/LocationBusiness.dart';
@@ -35,6 +36,7 @@ class FlutterStartup extends StatelessWidget {
         DashboardBusiness.id: (context) => DashboardBusiness(),
         AddLocation.id: (context) => AddLocation(),
         LocationBusiness.id: (context) => LocationBusiness(),
+        AddAvailability.id: (context) => AddAvailability()
       },
     );
   }
