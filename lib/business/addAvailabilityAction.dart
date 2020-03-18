@@ -63,7 +63,6 @@ addAvailability(
       "end_time7": end_time7,
     });
 
-    // TODO: need to send a token with this request
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String tokenBusiness = (prefs.getString("tokenBusiness"));
 

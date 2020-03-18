@@ -2,10 +2,29 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterstartup/business/addAvailabilityAction.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
-
 import 'DashboardBusiness.dart';
-//import 'TimePicker.dart';
+
+class AddAvailability extends StatefulWidget {
+  static const String id = "addAvailability";
+  @override
+  _AddAvailabilityState createState() => _AddAvailabilityState();
+}
+
+class _AddAvailabilityState extends State<AddAvailability> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Add Availability"),
+        backgroundColor: Colors.lightBlueAccent,
+      ),
+      backgroundColor: CupertinoColors.tertiarySystemBackground,
+      body: new SingleChildScrollView(
+        child: TimePicker(),
+      ),
+    );
+  }
+}
 
 class TimePicker extends StatefulWidget {
   @override
@@ -945,33 +964,6 @@ class _BottomPicker extends StatelessWidget {
             child: child,
           ),
         ),
-      ),
-    );
-  }
-}
-
-class AddAvailability extends StatefulWidget {
-  static const String id = "addAvailability";
-  @override
-  _AddAvailabilityState createState() => _AddAvailabilityState();
-}
-
-class _AddAvailabilityState extends State<AddAvailability> {
-//  String start_time1;
-//  String end_time1;
-//  String start_time2;
-//  String end_time2;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Add Availability"),
-        backgroundColor: Colors.lightBlueAccent,
-      ),
-      backgroundColor: CupertinoColors.tertiarySystemBackground,
-      body: new SingleChildScrollView(
-        child: TimePicker(),
       ),
     );
   }
