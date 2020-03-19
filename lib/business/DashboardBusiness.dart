@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterstartup/business/AddAvailability.dart';
+import 'package:flutterstartup/business/AvailabilityBusiness.dart';
 import 'package:flutterstartup/business/LocationBusiness.dart';
 
 class DashboardBusiness extends StatefulWidget {
@@ -20,7 +21,7 @@ class _DashboardBusinessState extends State<DashboardBusiness> {
       body: Column(
         children: <Widget>[
           LocationBusiness(),
-          //TODO: add availability
+          AvailabilityBusiness(),
           CupertinoButton.filled(
             child: Text("Add Availability"),
             onPressed: () {
