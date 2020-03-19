@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterstartup/business/AddAvailability.dart';
-import 'package:flutterstartup/business/AddLocation.dart';
+import 'package:flutterstartup/business/AvailabilityAdd.dart';
+import 'package:flutterstartup/business/LocationAdd.dart';
 import 'package:flutterstartup/business/LandingBusiness.dart';
 import 'package:flutterstartup/business/LocationBusiness.dart';
 import 'package:flutterstartup/business/LoginBusiness.dart';
 import 'package:flutterstartup/business/RegisterBusiness.dart';
 import 'package:flutterstartup/business/DashboardBusiness.dart';
+import 'package:flutterstartup/business/servicesAdd.dart';
 import 'package:flutterstartup/user/DashboardUser.dart';
 import 'user/LandingUser.dart';
 import 'user/RegisterUser.dart';
@@ -34,9 +35,10 @@ class FlutterStartup extends StatelessWidget {
         LoginBusiness.id: (context) => LoginBusiness(),
         RegisterBusiness.id: (context) => RegisterBusiness(),
         DashboardBusiness.id: (context) => DashboardBusiness(),
-        AddLocation.id: (context) => AddLocation(),
+        LocationAdd.id: (context) => LocationAdd(),
         LocationBusiness.id: (context) => LocationBusiness(),
-        AddAvailability.id: (context) => AddAvailability()
+        AvailabilityAdd.id: (context) => AvailabilityAdd(),
+        ServicesAdd.id: (context) => ServicesAdd()
       },
     );
   }

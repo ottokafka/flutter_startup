@@ -7,12 +7,19 @@ registerBusiness(firstName, lastName, email, password, phoneNumber) async {
   // ios work with 127.0.0.1
   try {
 //    var url = 'http://127.0.0.1:5000/api/registerBusiness';
-    var url = 'http://10.0.2.2/api/registerBusiness';
+    var url = 'http://10.0.2.2:5000/api/registerBusiness';
 //    var url = 'https://startup-barber.herokuapp.com/api/registerBusiness';
-    // email has to be wrapped in " " or there will be an error
-    String json =
-        '{"firstName": "$firstName", "lastName": "$lastName", "email": "$email", "password": "$password", "phoneNumber": "$phoneNumber"}';
-    print("the user entered $json");
+
+    var json = jsonEncode(<String, dynamic>{
+      "firstName": firstName,
+      "lastName": lastName,
+      "email": email,
+      "password": password,
+      "phoneNumber": phoneNumber
+    });
+
+    print(json);
+
     Map<String, String> headers = {"Content-type": "application/json"};
     var response = await http.post(url, headers: headers, body: json);
 

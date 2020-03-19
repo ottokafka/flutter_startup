@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterstartup/business/addAvailabilityAction.dart';
+import 'package:flutterstartup/business/availabilityAction.dart';
 import 'package:intl/intl.dart';
 import 'DashboardBusiness.dart';
 
-class AddAvailability extends StatefulWidget {
+class AvailabilityAdd extends StatefulWidget {
   static const String id = "addAvailability";
   @override
-  _AddAvailabilityState createState() => _AddAvailabilityState();
+  _AvailabilityAddState createState() => _AvailabilityAddState();
 }
 
-class _AddAvailabilityState extends State<AddAvailability> {
+class _AvailabilityAddState extends State<AvailabilityAdd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

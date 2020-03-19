@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutterstartup/business/AddLocation.dart';
+import 'package:flutterstartup/business/LocationAdd.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,8 +22,11 @@ Future<Location> fetchLocation() async {
     // If the server did return a 200 OK response,
     // then parse the JSON.
     return Location.fromJson(json.decode(response.body));
+  } else if (response.statusCode == 400) {
+    // if return a 400 bad request response business has not setup a business profile yet
+    print(response.statusCode);
   } else {
-    // If the server did not return a 200 OK response,
+    // If the server did not return a 200 OK response, or did return a 400 bad request response
     // then throw an exception.
     throw Exception('Failed to load Location');
   }
@@ -95,7 +98,7 @@ class _LocationBusinessState extends State<LocationBusiness> {
                       FlatButton(
                         child: const Text('EDIT'),
                         onPressed: () {
-                          Navigator.pushNamed(context, AddLocation.id);
+                          Navigator.pushNamed(context, LocationAdd.id);
                         },
                       ),
                     ],
@@ -109,7 +112,36 @@ class _LocationBusinessState extends State<LocationBusiness> {
         }
 
         // By default, show a loading spinner.
-        return CircularProgressIndicator();
+        //todo: load Create a Location card thats empty
+//        return CircularProgressIndicator();
+        return Center(
+          child: Card(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const ListTile(
+                  leading: Icon(Icons.place),
+                  title: Text("Location"),
+                ),
+                Text("Company Name"),
+                Text("Address"),
+                Text("City"),
+                Text("State"),
+                Text("zip"),
+                ButtonBar(
+                  children: <Widget>[
+                    FlatButton(
+                      child: const Text('CREATE'),
+                      onPressed: () {
+                        Navigator.pushNamed(context, LocationAdd.id);
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
       },
     );
   }

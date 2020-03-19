@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutterstartup/business/AddLocation.dart';
+import 'package:flutterstartup/business/LocationAdd.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -92,6 +92,10 @@ class Availability {
 
   factory Availability.fromJson(Map<String, dynamic> json) {
     print(json["availability"]);
+    // if json Availability is null. display an empty Availability
+    if (json["availability"] == null) {
+      return Availability();
+    }
     return Availability(
       day_of_week1: json['availability']['day_of_week1'] as String,
       start_time1: json['availability']['start_time1'] as String,
@@ -142,7 +146,44 @@ class _LocationBusinessState extends State<AvailabilityBusiness> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           var data = snapshot.data;
-          // todo: return all the location data here
+          if (data.day_of_week1 == null) {
+            return Center(
+              child: Card(
+                child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const ListTile(
+                        leading: Icon(Icons.access_time),
+                        title: Text("Availability"),
+                      ),
+                      ListView(
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.all(20.0),
+                        children: <Widget>[
+                          Center(child: const Text('Monday: ?')),
+                          Center(child: const Text('Tuesday: ?')),
+                          Center(child: const Text('Wednesday: ?')),
+                          Center(child: const Text('Thursday: ?')),
+                          Center(child: const Text('Friday: ?')),
+                          Center(child: const Text('Saturday: ?')),
+                          Center(child: const Text('Sunday: ?')),
+                          ButtonBar(
+                            children: <Widget>[
+                              FlatButton(
+                                child: const Text('ADD AVAILABILITY'),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, LocationAdd.id);
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    ]),
+              ),
+            );
+          }
 //                return Text(snapshot.data.address);
           return Center(
             child: Card(
@@ -235,7 +276,7 @@ class _LocationBusinessState extends State<AvailabilityBusiness> {
                       FlatButton(
                         child: const Text('EDIT'),
                         onPressed: () {
-                          Navigator.pushNamed(context, AddLocation.id);
+                          Navigator.pushNamed(context, LocationAdd.id);
                         },
                       ),
                     ],
