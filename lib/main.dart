@@ -23,7 +23,7 @@ class FlutterStartup extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
 //      home: Scaffold(),
-      initialRoute: DashboardBusiness.id,
+      initialRoute: LandingUser.id,
       routes: {
         LandingUser.id: (context) => LandingUser(),
         LoginUser.id: (context) => LoginUser(),

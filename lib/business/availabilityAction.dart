@@ -27,8 +27,9 @@ addAvailability(
   // in web use localhost but in android use 10.0.2.2
   // ios work with 127.0.0.1
   try {
+    var url = 'http://150.136.56.131:5000/api/availability';
 //    var url = 'http://127.0.0.1:5000/api/registerBusiness';
-    var url = 'http://10.0.2.2:5000/api/availability';
+//    var url = 'http://10.0.2.2:5000/api/availability';
 //    var url = 'https://startup-barber.herokuapp.com/api/businessinfo';
     // start_time2 has to be wrapped in " " or there will be an error
 

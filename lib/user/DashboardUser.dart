@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterstartup/user/Search.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'LandingUser.dart';
 
 class DashboardUser extends StatefulWidget {
   static const String id = "dashboardUser";
@@ -48,6 +51,23 @@ class _DashboardUserState extends State<DashboardUser> {
                 },
               ),
             ),
+
+            SizedBox(height: 40),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
+              child: MaterialButton(
+                height: 42.0,
+                color: Colors.deepOrange,
+                child: Text("Logout"),
+                onPressed: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  await prefs.setString("tokenUser", null);
+                  Navigator.pushNamed(context, LandingUser.id);
+                },
+              ),
+            ),
+
 //
           ],
         ),

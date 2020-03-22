@@ -8,8 +8,9 @@ Future<List> searchCity(city) async {
   // in web use localhost but in android use 10.0.2.2
   // ios work with 127.0.0.1
   try {
+    var url = 'http://150.136.56.131:5000/api/businessinfo/city/';
 //    var url = 'http://127.0.0.1:5000/api/businessinfo/city';
-    var url = 'https://startup-barber.herokuapp.com/api/businessinfo/city';
+//    var url = 'https://startup-barber.herokuapp.com/api/businessinfo/city';
     // email has to be wrapped in " " or there will be an error
     String json = '{"city": "$city"}';
     print(json);

@@ -11,7 +11,8 @@ loginUser(email, password) async {
   // in web use localhost but in android use 10.0.2.2
   // ios work with 127.0.0.1
   try {
-    var url = 'http://10.0.2.2:5000/api/user/loginUser';
+    var url = 'http://150.136.56.131:5000/api/user/loginUser';
+//    var url = 'http://10.0.2.2:5000/api/user/loginUser';
 //    var url = 'https://startup-barber.herokuapp.com/api/user/loginUser';
     // email has to be wrapped in " " or there will be an error
     String json = '{"email": "$email", "password": "$password"}';

@@ -10,7 +10,8 @@ Future<Location> fetchLocation() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String tokenBusiness = (prefs.getString("tokenBusiness"));
 
-  var url = 'http://10.0.2.2:5000/api/businessinfo/me';
+  var url = 'http://150.136.56.131:5000/api/businessinfo/me';
+//  var url = 'http://10.0.2.2:5000/api/businessinfo/me';
 //  var url = 'https://startup-barber.herokuapp.com/api/businessinfo/me';;
   Map<String, String> headers = {
     "Content-type": "application/json",
@@ -123,11 +124,11 @@ class _LocationBusinessState extends State<LocationBusiness> {
                   leading: Icon(Icons.place),
                   title: Text("Location"),
                 ),
-                Text("Company Name"),
-                Text("Address"),
-                Text("City"),
-                Text("State"),
-                Text("zip"),
+                Text("Company Name: ?"),
+                Text("Address: ?"),
+                Text("City: ?"),
+                Text("State: ?"),
+                Text("zip: ?"),
                 ButtonBar(
                   children: <Widget>[
                     FlatButton(

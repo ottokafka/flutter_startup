@@ -7,7 +7,8 @@ import 'package:http/http.dart' as http;
 
 // --- Fetch to data with http Client request
 Future<List<Location>> fetchPhotos(http.Client client) async {
-  var url = 'http://10.0.2.2:5000/api/businessinfo/city';
+  var url = 'http://150.136.56.131:5000/api/businessinfo/city/';
+//  var url = 'http://10.0.2.2:5000/api/businessinfo/city';
 //  var url = 'https://startup-barber.herokuapp.com/api/businessinfo/city';
   String json = '{"city": "sacramento"}';
   Map<String, String> headers = {
@@ -104,37 +105,35 @@ class LocationList extends StatelessWidget {
 
         return Center(
           child: Card(
-            child: InkWell(
-              splashColor: Colors.blue.withAlpha(20),
-              onTap: () {
-                print('Card tapped.');
-              },
-              child: ListView(
-                children: <Widget>[
-                  Text(
-                    locations[index].company,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Text(
-                    locations[index].address,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Text(
-                    locations[index].city,
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    locations[index].state,
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    locations[index].zip,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
+            child: Column(
+              children: <Widget>[
+                const ListTile(
+                  leading: Icon(Icons.place),
+//                  title: Text("Availability"),
+                ),
+                Text(
+                  locations[index].company,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                Text(
+                  locations[index].address,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  locations[index].city,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  locations[index].state,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  locations[index].zip,
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ),
         );

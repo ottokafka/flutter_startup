@@ -16,10 +16,10 @@ class _LandingUserState extends State<LandingUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text("Home"),
-        backgroundColor: Colors.lightBlueAccent,
-      ),
+//      appBar: AppBar(
+//        title: Text("Home"),
+//        backgroundColor: Colors.lightBlueAccent,
+//      ),
       body: Center(
         child: Column(
           // This mainAxisAlignment puts the elements in the middle of the phone

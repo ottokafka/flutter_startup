@@ -12,7 +12,8 @@ Future<Services> fetchServices() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String tokenBusiness = (prefs.getString("tokenBusiness"));
 
-  var url = 'http://10.0.2.2:5000/api/businessinfo/me';
+  var url = 'http://150.136.56.131:5000/api/businessinfo/me';
+//  var url = 'http://10.0.2.2:5000/api/businessinfo/me';
 //  var url = 'https://startup-barber.herokuapp.com/api/businessinfo/me';;
   Map<String, String> headers = {
     "Content-type": "application/json",
@@ -26,9 +27,13 @@ Future<Services> fetchServices() async {
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
+    print(response.statusCode);
     return Services.fromJson(json.decode(response.body));
+  } else if (response.statusCode == 400) {
+    // if return a 400 bad request response business has not setup a business profile yet
+    print(response.statusCode);
   } else {
-    // If the server did not return a 200 OK response,
+    // If the server did not return a 200 OK response, or did return a 400 bad request response
     // then throw an exception.
     throw Exception('Failed to load Services');
   }
@@ -138,7 +143,32 @@ class _ServicesBusinessState extends State<ServicesBusiness> {
         }
 
         // By default, show a loading spinner.
-        return CircularProgressIndicator();
+//        return CircularProgressIndicator();
+        return Center(
+          child: Card(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const ListTile(
+                  leading: Icon(Icons.content_cut),
+                  title: Text("Services"),
+                ),
+                Text("Fade: ?"),
+                Text("lineup: ?"),
+                ButtonBar(
+                  children: <Widget>[
+                    FlatButton(
+                      child: const Text('ADD SERVICES'),
+                      onPressed: () {
+                        Navigator.pushNamed(context, ServicesAdd.id);
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
       },
     );
   }
