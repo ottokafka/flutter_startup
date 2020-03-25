@@ -1,4 +1,4 @@
-# flutterstartup
+# flutter startup
 
 A new Flutter application.
 
@@ -24,9 +24,12 @@ This is a boilerplate to quickly get a startup idea going. Has a user sign in an
 The user can find business that have been added and see there address. Business can post there address
 and availability and services.
 
+## Why flutter for iOS and Android apps
+flutter allows me to write once and run on Android and iOS. That's really exciting because other frameworks such as react native to learn once write anywhere. So with react native you still have 2 code bases. So google finally offering a solution that allow one code base and native speed apps.
 
-Images
 
+
+###  Example Images of the App
 Landing page
 
 <img src="https://user-images.githubusercontent.com/21117852/77249707-13145480-6c7e-11ea-9a93-21ad88ef3d81.png" alt="drawing" width="300"/>

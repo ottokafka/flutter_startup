@@ -43,8 +43,6 @@ class _DashboardBusinessState extends State<DashboardBusiness> {
 //                Navigator.pushNamed(context, ServicesAdd.id);
 //              },
 //            ),
-
-            // TODO: add services
           ],
         ),
       ),

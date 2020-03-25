@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterstartup/business/LandingBusiness.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'DashboardUser.dart';
 import 'LoginUser.dart';
 import 'RegisterUser.dart';
 
@@ -14,6 +16,15 @@ class LandingUser extends StatefulWidget {
 class _LandingUserState extends State<LandingUser> {
   @override
   Widget build(BuildContext context) {
+    checkToken() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String tokenUser = (prefs.getString("tokenUser"));
+      print("The tokenUser is: $tokenUser");
+      if (tokenUser != null) {
+        Navigator.pushNamed(context, DashboardUser.id);
+      }
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
 //      appBar: AppBar(
@@ -34,6 +45,7 @@ class _LandingUserState extends State<LandingUser> {
                 color: Colors.lightBlue,
                 child: Text("Login"),
                 onPressed: () {
+                  checkToken();
                   Navigator.pushNamed(context, LoginUser.id);
                 },
               ),
@@ -46,6 +58,7 @@ class _LandingUserState extends State<LandingUser> {
                 color: Colors.lightBlueAccent,
                 child: Text("Register"),
                 onPressed: () {
+                  checkToken();
                   Navigator.pushNamed(context, RegisterUser.id);
                 },
               ),

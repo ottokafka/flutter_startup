@@ -9,6 +9,8 @@ import 'package:flutterstartup/business/RegisterBusiness.dart';
 import 'package:flutterstartup/business/DashboardBusiness.dart';
 import 'package:flutterstartup/business/servicesAdd.dart';
 import 'package:flutterstartup/user/DashboardUser.dart';
+import 'fuckingState/ChangeNotifierProvider1.dart';
+import 'fuckingState/FutureBuilder1.dart';
 import 'user/LandingUser.dart';
 import 'user/RegisterUser.dart';
 import 'user/LoginUser.dart';
@@ -38,7 +40,7 @@ class FlutterStartup extends StatelessWidget {
         LocationAdd.id: (context) => LocationAdd(),
         LocationBusiness.id: (context) => LocationBusiness(),
         AvailabilityAdd.id: (context) => AvailabilityAdd(),
-        ServicesAdd.id: (context) => ServicesAdd()
+        ServicesAdd.id: (context) => ServicesAdd(),
       },
     );
   }

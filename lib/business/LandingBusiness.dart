@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutterstartup/business/DashboardBusiness.dart';
 import 'package:flutterstartup/business/LoginBusiness.dart';
 import 'package:flutterstartup/business/RegisterBusiness.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,12 +18,9 @@ class _LandingBusinessState extends State<LandingBusiness> {
   checkToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String tokenBusiness = (prefs.getString("tokenBusiness"));
+    print("The tokenBusiness is: $tokenBusiness");
     if (tokenBusiness != null) {
-      await prefs.setString("tokenBusiness", null);
-    }
-//      print("The tokenUser is: $tokenUser");
-    if (tokenBusiness != null) {
-//      Navigator.pushNamed(context, DashboardBusiness.id);
+      Navigator.pushNamed(context, DashboardBusiness.id);
     }
   }
 
@@ -50,6 +48,7 @@ class _LandingBusinessState extends State<LandingBusiness> {
                 textColor: Colors.white,
                 child: Text("Register business"),
                 onPressed: () {
+                  checkToken();
                   Navigator.pushNamed(context, RegisterBusiness.id);
                 },
               ),
@@ -62,6 +61,7 @@ class _LandingBusinessState extends State<LandingBusiness> {
                 textColor: Colors.white,
                 child: Text("Login business"),
                 onPressed: () {
+                  checkToken();
                   Navigator.pushNamed(context, LoginBusiness.id);
                 },
               ),
